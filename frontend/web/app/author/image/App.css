@@ -1,0 +1,173 @@
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.upload-section {
+    border: 2px dashed #ccc;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 8px;
+}
+
+.upload-button {
+    background: #4CAF50;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.upload-button:hover {
+    background: #45a049;
+}
+
+.image-preview {
+    margin-top: 2rem;
+}
+
+.image-preview img {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.mint-button {
+    background: #2196F3;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+}
+
+.mint-button:hover:not(:disabled) {
+    background: #1976D2;
+}
+
+.mint-button:disabled {
+    background: #BBDEFB;
+    cursor: not-allowed;
+}
+
+.error-message {
+    color: #f44336;
+    margin: 1rem 0;
+}
+
+.success-message {
+    color: #4CAF50;
+    margin-top: 1rem;
+}
+
+/* 新增样式 */
+.history-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.image-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.image-card:hover {
+    transform: translateY(-2px);
+}
+
+.image-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.95;
+}
+
+.image-card img.minted {
+    opacity: 0.7;
+    position: relative;
+}
+
+.image-card img.minted::after {
+    content: "✓";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.image-meta {
+    padding: 1rem;
+    background: #f8f9fa;
+}
+
+.image-meta time {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.image-meta button {
+    width: 100%;
+    padding: 0.5rem;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.image-meta button:disabled {
+    background: #BBDEFB;
+    cursor: not-allowed;
+}
+
+.minted-tag {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.tx-link {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #2196F3;
+    text-decoration: none;
+}
+
+.tx-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+}

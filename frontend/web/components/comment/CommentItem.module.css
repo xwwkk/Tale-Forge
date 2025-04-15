@@ -1,0 +1,243 @@
+.container {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  align-items: flex-start;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.avatarImage {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.userInfo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.userName {
+  font-weight: 500;
+  color: #333;
+  display: inline-block;
+}
+
+.time {
+  color: #666;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.actionButton:hover {
+  color: #333;
+}
+
+.actionButton.liked {
+  color: #ef4444;
+}
+
+.likeCount {
+  font-size: 0.875rem;
+}
+
+.moreActions {
+  position: relative;
+}
+
+.actionMenu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.menuItem {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.menuItem:hover {
+  background: #f3f4f6;
+  color: #dc2626;
+}
+
+.text {
+  color: #333;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.replies {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid #e5e7eb;
+}
+
+.reply {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.replyAvatar {
+  flex-shrink: 0;
+}
+
+.replyContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.replyHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.replyUserName {
+  font-weight: 500;
+  color: #333;
+  font-size: 0.875rem;
+}
+
+.replyTime {
+  color: #666;
+  font-size: 0.75rem;
+}
+
+.replyText {
+  color: #333;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.viewMoreReplies {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background: none;
+  border: none;
+  color: #7877C6;
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.viewMoreReplies:hover {
+  color: #6665b5;
+}
+
+/* 主题相关样式 */
+:global(.theme-default) .userName,
+:global(.theme-default) .text,
+:global(.theme-default) .replyUserName,
+:global(.theme-default) .replyText {
+  color: #333;
+}
+
+:global(.theme-eyeCare) .userName,
+:global(.theme-eyeCare) .text,
+:global(.theme-eyeCare) .replyUserName,
+:global(.theme-eyeCare) .replyText {
+  color: #333;
+}
+
+:global(.theme-dark) .container {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(.theme-dark) .userName,
+:global(.theme-dark) .text,
+:global(.theme-dark) .replyUserName,
+:global(.theme-dark) .replyText {
+  color: #e0e0e0;
+}
+
+:global(.theme-dark) .time,
+:global(.theme-dark) .actionButton,
+:global(.theme-dark) .replyTime {
+  color: #999;
+}
+
+:global(.theme-dark) .actionMenu {
+  background: #1a1a1a;
+  border-color: #3a3a3a;
+}
+
+:global(.theme-dark) .menuItem:hover {
+  background: #2a2a2a;
+}
+
+:global(.theme-sepia) .userName,
+:global(.theme-sepia) .text,
+:global(.theme-sepia) .replyUserName,
+:global(.theme-sepia) .replyText {
+  color: #5c4b37;
+}
+
+:global(.theme-sepia) .time,
+:global(.theme-sepia) .actionButton,
+:global(.theme-sepia) .replyTime {
+  color: #8b7355;
+} 

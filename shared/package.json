@@ -1,0 +1,25 @@
+{
+  "name": "@tale-forge/shared",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@types/multer": "^1.4.12",
+    "ethers": "^5.7.2",
+    "multer": "^1.4.5-lts.2",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.2.0",
+    "hardhat": "^2.22.19",
+    "typescript": "^4.9.5",
+    "vitest": "^3.0.7"
+  }
+}

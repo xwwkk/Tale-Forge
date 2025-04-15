@@ -1,0 +1,381 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  margin-top: 140px; /* 为导航栏和子导航栏预留空间 */
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.content {
+  display: flex;
+  gap: 2rem;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.moduleButton {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.moduleButton:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.moduleButton.active {
+  background: #2563eb;
+  color: white;
+}
+
+.moduleIcon {
+  margin-right: 0.75rem;
+  font-size: 1.25rem;
+}
+
+/* 主内容区域样式 */
+.mainContent {
+  flex: 1;
+  min-height: 600px;
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* 书架样式 */
+.workGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.workCard {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.coverWrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.cover {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 0.5rem 0.5rem;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: #2563eb;
+  transition: width 0.3s ease;
+}
+
+.info {
+  flex: 1;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.author {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.lastRead {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* 阅读历史样式 */
+.historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.historyItem {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+}
+
+.historyItem:hover {
+  background: #f8fafc;
+}
+
+.historyCover {
+  border-radius: 0.25rem;
+}
+
+.historyInfo {
+  flex: 1;
+}
+
+.historyTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.historyAuthor {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.historyMeta {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* NFT列表样式 */
+.nftGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.nftCard {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nftImageWrapper {
+  position: relative;
+  padding-top: 100%;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.nftImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nftInfo {
+  padding: 0.5rem;
+}
+
+.nftTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.nftCreator {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.nftMeta {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* 交易记录样式 */
+.transactionList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.transactionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+}
+
+.transactionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.transactionType {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+}
+
+.transactionMeta {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.transactionAmount {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+/* 设置页面样式 */
+.settings {
+  max-width: 600px;
+}
+
+.settingGroup {
+  margin-bottom: 2rem;
+}
+
+.settingTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #0f172a;
+}
+
+.settingItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.settingItem label {
+  width: 100px;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.settingItem input,
+.settingItem select {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.uploadButton {
+  padding: 0.5rem 1rem;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.uploadButton:hover {
+  background: #1d4ed8;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .moduleButton {
+    padding: 0.5rem;
+  }
+
+  .workGrid,
+  .nftGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+/* 深色模式 */
+@media (prefers-color-scheme: dark) {
+  .title {
+    color: #e2e8f0;
+  }
+
+  .moduleButton {
+    color: #94a3b8;
+  }
+
+  .moduleButton:hover {
+    background: #1e293b;
+    color: #e2e8f0;
+  }
+
+  .historyItem,
+  .transactionItem {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  .historyItem:hover {
+    background: #334155;
+  }
+
+  .settingTitle {
+    color: #e2e8f0;
+  }
+
+  .settingItem input,
+  .settingItem select {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+} 

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1741292616469",
+    "title": "第1章",
+    "content": "",
+    "wordCount": 0,
+    "order": 1,
+    "status": "draft",
+    "isVip": false,
+    "createdAt": "2025-03-06T20:23:36.469Z",
+    "updatedAt": "2025-03-06T20:23:36.469Z"
+  },
+  {
+    "id": "1741292819586",
+    "title": "第2章",
+    "content": "",
+    "wordCount": 0,
+    "order": 2,
+    "status": "draft",
+    "isVip": false,
+    "createdAt": "2025-03-06T20:26:59.586Z",
+    "updatedAt": "2025-03-06T20:26:59.586Z"
+  }
+]

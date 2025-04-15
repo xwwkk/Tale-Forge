@@ -1,0 +1,61 @@
+.resizable-image-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 1em 0;
+}
+
+.resizable-image-wrapper img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.resize-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #4a9eff;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.resize-handle-nw {
+  top: -5px;
+  left: -5px;
+  cursor: nw-resize;
+}
+
+.resize-handle-ne {
+  top: -5px;
+  right: -5px;
+  cursor: ne-resize;
+}
+
+.resize-handle-sw {
+  bottom: -5px;
+  left: -5px;
+  cursor: sw-resize;
+}
+
+.resize-handle-se {
+  bottom: -5px;
+  right: -5px;
+  cursor: se-resize;
+}
+
+.resizable-image-wrapper:hover .resize-handle {
+  display: block;
+}
+
+.resizable-image-wrapper .resize-handle {
+  display: none;
+}
+
+.resizable-image-wrapper.ProseMirror-selectednode .resize-handle {
+  display: block;
+}
+
+.resizable-image-wrapper.ProseMirror-selectednode img {
+  outline: 2px solid #4a9eff;
+} 

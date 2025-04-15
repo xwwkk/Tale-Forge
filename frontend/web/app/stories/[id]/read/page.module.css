@@ -1,0 +1,475 @@
+/* 阅读器根容器 */
+.reader {
+  min-height: 100vh;
+  position: relative;
+  background: #f8f9fa;
+}
+
+/* 阅读器顶部导航 */
+.readerHeader {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.leftNav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rightNav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.actionButton:hover {
+  color: #ed4259;
+}
+
+.actionButton.liked {
+  color: #ed4259;
+}
+
+.actionButton svg {
+  font-size: 16px;
+}
+
+/* 工具栏 */
+.toolbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.toolbarButton {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  color: #4b5563;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolbarButton:hover {
+  background: #f3f4f6;
+  color: #2563eb;
+}
+
+.toolbarButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* 内容区域 */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: inherit;
+  min-height: calc(100vh - 64px);
+}
+
+.contentWrapper {
+  white-space: pre-wrap !important;
+  word-wrap: break-word;
+}
+
+/* 图片基础样式 */
+.contentWrapper :global(img) {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 居中段落中的图片 */
+.contentWrapper :global([style*="text-align: center"]) img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* 保持编辑器的原始格式 */
+.content :global(.editor-paragraph) {
+  margin: 1em 0;
+  min-height: 1.5em;
+  white-space: pre-wrap !important;
+}
+
+/* 保持段落的缩进和对齐 */
+.contentWrapper :global([style*="text-align: center"]) {
+  text-align: center !important;
+  text-indent: 0 !important;
+}
+
+.contentWrapper :global([style*="text-align: right"]) {
+  text-align: right !important;
+  text-indent: 0 !important;
+}
+
+.contentWrapper :global([style*="text-align: left"]) {
+  text-align: left !important;
+  text-indent: 0 !important;
+}
+
+.contentWrapper :global([style*="text-indent"]) {
+  text-indent: 2em !important;
+}
+
+/* 保持空白段落的高度 */
+.content :global(p:empty) {
+  min-height: 1.5em;
+  margin: 1em 0;
+}
+
+.chapterHeader {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.chapterTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.wordCount {
+  font-size: 14px;
+  color: #666;
+  margin-left: 8px;
+  }
+
+  .chapterInfo {
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* 互动区域 */
+.contentFooter {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.interactionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.interactionButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  background: inherit;
+  color: #666;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.interactionButton:hover:not(:disabled) {
+  border-color: #ed4259;
+  color: #ed4259;
+}
+
+.interactionButton.liked {
+  background: #ed4259;
+  border-color: #ed4259;
+  color: white;
+}
+
+.interactionButton.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.interactionButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* 底部导航 */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 16px;
+  background: white;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.navButton {
+  padding: 8px 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  background: inherit;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.navButton:hover:not(:disabled) {
+  background: #f3f4f6;
+  transform: translateY(-2px);
+}
+
+.navButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chapterStatus {
+  font-size: 14px;
+  color: #666;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* 评论区 */
+.commentSection {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: inherit;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 章节树 */
+.chapterTreeOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 40;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.chapterTreeWrapper {
+  height: 100%;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* 设置面板 */
+.settingsOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 40;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* 主题样式 */
+.theme-default {
+  background: #ffffff;
+  color: #333333;
+}
+
+.theme-eyeCare {
+  background: #c7edcc;
+  color: #333333;
+}
+
+.theme-dark {
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.theme-sepia {
+  background: #f4ecd8;
+  color: #5c4b37;
+}
+
+/* 确保主题背景色应用到所有子元素 */
+.theme-default .readerHeader,
+.theme-default .content,
+.theme-default .footer,
+.theme-default .commentSection,
+.theme-default .navButton,
+.theme-default .interactionButton {
+  background: #ffffff;
+}
+
+.theme-eyeCare .readerHeader,
+.theme-eyeCare .content,
+.theme-eyeCare .footer,
+.theme-eyeCare .commentSection,
+.theme-eyeCare .navButton,
+.theme-eyeCare .interactionButton {
+  background: #c7edcc;
+}
+
+.theme-dark .readerHeader,
+.theme-dark .content,
+.theme-dark .footer,
+.theme-dark .commentSection,
+.theme-dark .navButton,
+.theme-dark .interactionButton {
+  background: #1a1a1a;
+}
+
+.theme-sepia .readerHeader,
+.theme-sepia .content,
+.theme-sepia .footer,
+.theme-sepia .commentSection,
+.theme-sepia .navButton,
+.theme-sepia .interactionButton {
+  background: #f4ecd8;
+}
+
+/* 字体大小 */
+.fontSize-small {
+  font-size: 14px;
+}
+
+.fontSize-normal {
+  font-size: 16px;
+}
+
+.fontSize-large {
+  font-size: 18px;
+}
+
+.fontSize-xlarge {
+  font-size: 20px;
+}
+
+/* 行高 */
+.lineHeight-compact {
+  line-height: 1.5;
+}
+
+.lineHeight-normal {
+  line-height: 1.8;
+}
+
+.lineHeight-loose {
+  line-height: 2;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .readerHeader {
+    padding: 8px 16px;
+  }
+
+  .rightNav {
+    gap: 16px;
+  }
+
+  .actionButton {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .chapterTitle {
+    font-size: 20px;
+  }
+
+  .toolbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  background: white;
+    padding: 0.75rem;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: space-around;
+    z-index: 30;
+  }
+
+  .toolbarButton {
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+  }
+
+  .toolbarButton svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .interactionButtons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .navButton {
+    padding: 6px 16px;
+    font-size: 12px;
+  }
+}

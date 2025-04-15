@@ -1,0 +1,943 @@
+.main {
+  min-height: 100vh;
+  background: #fff;
+  padding-top: 60px; /* 只为全局导航预留空间 */
+}
+
+.navbar {
+  position: sticky;
+  top: 60px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  z-index: 40;
+  transition: all 0.3s ease;
+}
+
+.navbarContent {
+  max-width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+  align-items: start;
+}
+
+.coverWrapper {
+  position: relative;
+  aspect-ratio: 2/3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background: #f3f4f6;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.coverWrapper:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.cover {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.coverWrapper:hover .cover {
+  transform: scale(1.05);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.category {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(120, 119, 198, 0.08);
+  border-radius: 20px;
+  color: #7877C6;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  width: fit-content;
+  transition: all 0.2s ease;
+}
+
+.category:hover {
+  background: rgba(120, 119, 198, 0.12);
+  transform: translateY(-1px);
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+  margin-bottom: 12px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+.authorInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: 16px;
+  margin: 16px 0;
+  transition: all 0.2s ease;
+}
+
+.authorInfo:hover {
+  background: #f3f4f6;
+}
+
+.authorAvatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.authorName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 16px;
+  background: rgba(120, 119, 198, 0.04);
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.statsItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.statsItem:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(120, 119, 198, 0.1);
+}
+
+.statsIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(120, 119, 198, 0.08);
+  border-radius: 8px;
+  color: #7877C6;
+}
+
+.statsIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.statsText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statsLabel {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.statsValue {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.description {
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 15px;
+  white-space: pre-wrap;
+  letter-spacing: 0.2px;
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.readButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: #7877C6;
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(120, 119, 198, 0.2);
+}
+
+.readButton:hover {
+  background: #6665b5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(120, 119, 198, 0.25);
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  color: #4b5563;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.actionButton:hover {
+  border-color: #7877C6;
+  color: #7877C6;
+  transform: translateY(-2px);
+}
+
+.actionButton.liked {
+  color: #ef4444;
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.chapters {
+  margin-top: 64px;
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.chaptersHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.chaptersTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chaptersCount {
+  color: #7877C6;
+  font-size: 14px;
+  font-weight: 600;
+  background: rgba(120, 119, 198, 0.08);
+  padding: 6px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+
+.chaptersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+.chapterCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chapterCard:hover {
+  border-color: #7877C6;
+  background: #f8f7ff;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(120, 119, 198, 0.12);
+}
+
+.chapterInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(120, 119, 198, 0.04);
+  border-radius: 16px;
+  margin-bottom: 32px;
+}
+
+.chapterTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.4;
+}
+
+.chapterMeta {
+  color: #6b7280;
+  font-size: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.chapterPreview {
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.02);
+  padding: 16px;
+  border-radius: 12px;
+  font-style: italic;
+  letter-spacing: 0.2px;
+}
+
+.chapterStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.chapterStatItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid rgba(120, 119, 198, 0.1);
+  transition: all 0.2s ease;
+}
+
+.chapterStatItem:hover {
+  border-color: #7877C6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(120, 119, 198, 0.1);
+}
+
+.chapterStatLabel {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.chapterStatValue {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.chaptersButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  background: white;
+  border: 2px solid rgba(120, 119, 198, 0.2);
+  border-radius: 12px;
+  color: #7877C6;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.chaptersButton:hover {
+  background: rgba(120, 119, 198, 0.05);
+  border-color: #7877C6;
+  transform: translateY(-2px);
+}
+
+.chaptersButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+.web3Info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(120, 119, 198, 0.05) 0%, rgba(120, 119, 198, 0.1) 100%);
+  border-radius: 16px;
+  margin-bottom: 32px;
+}
+
+.web3Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.web3Title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.web3Grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.web3Card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid rgba(120, 119, 198, 0.2);
+  transition: all 0.2s ease;
+}
+
+.web3Card:hover {
+  border-color: #7877C6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(120, 119, 198, 0.1);
+}
+
+.web3Label {
+  font-size: 13px;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.web3Value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.web3Badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: rgba(120, 119, 198, 0.1);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #7877C6;
+}
+
+.nftPreview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(120, 119, 198, 0.05);
+  border: 2px solid rgba(120, 119, 198, 0.1);
+  transition: all 0.3s ease;
+}
+
+.nftPreview:hover {
+  border-color: #7877C6;
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(120, 119, 198, 0.15);
+}
+
+.nftImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tokenInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.tokenAmount {
+  color: #7877C6;
+  font-weight: 600;
+}
+
+.tokenSymbol {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.web3Button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid rgba(120, 119, 198, 0.2);
+  border-radius: 8px;
+  color: #7877C6;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.web3Button:hover {
+  background: rgba(120, 119, 198, 0.05);
+  border-color: #7877C6;
+}
+
+.web3Button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.copyrightInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(120, 119, 198, 0.05);
+  border-radius: 8px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.copyrightInfo svg {
+  color: #7877C6;
+}
+
+.web3Stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.web3StatItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background: rgba(120, 119, 198, 0.05);
+  border-radius: 6px;
+}
+
+.web3StatLabel {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.web3StatValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.web3Links {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.web3Link {
+  font-size: 13px;
+  color: #7877C6;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.web3Link:hover {
+  background: rgba(120, 119, 198, 0.1);
+  text-decoration: underline;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 12px;
+  padding: 4px 12px;
+  background: rgba(120, 119, 198, 0.08);
+  border-radius: 12px;
+  font-size: 13px;
+  color: #7877C6;
+}
+
+.authorCard {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(8px);
+  margin: 16px 0;
+}
+
+.authorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.authorMain {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.authorAvatar {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.authorName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  transition: color 0.2s ease;
+}
+
+.authorName:hover {
+  color: #7877C6;
+}
+
+.authorAddress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.addressLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.addressLink:hover {
+  color: #7877C6;
+}
+
+.followButton {
+  padding: 8px 20px;
+  background: rgba(120, 119, 198, 0.1);
+  color: #7877C6;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.followButton:hover {
+  background: #7877C6;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.authorStats {
+  display: flex;
+  gap: 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.authorStatItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.statValue {
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.earnings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 24px;
+  background: rgba(120, 119, 198, 0.04);
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.earningItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.earningIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  color: #7877C6;
+}
+
+.earningInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.earningLabel {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.earningValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-family: 'Roboto Mono', monospace;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding-top: 60px;
+  }
+
+  .navbar {
+    top: 60px;
+    height: 56px;
+  }
+
+  .container {
+    padding: 24px 16px;
+  }
+
+  .header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .coverWrapper {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .description {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .statItem {
+    font-size: 13px;
+    padding: 6px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .readButton, .actionButton {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+  }
+
+  .chapters {
+    margin-top: 32px;
+    padding: 24px 16px;
+    border-radius: 16px;
+  }
+
+  .chaptersHeader {
+    margin-bottom: 24px;
+  }
+
+  .chaptersTitle {
+    font-size: 20px;
+  }
+
+  .chaptersGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .chapterCard {
+    padding: 20px;
+  }
+
+  .web3Info {
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .web3Grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .web3Card {
+    padding: 12px;
+  }
+
+  .nftPreview {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .authorCard {
+    padding: 16px;
+  }
+
+  .authorHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .followButton {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .authorStats {
+    gap: 24px;
+  }
+
+  .earnings {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .chapterInfo {
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .chapterStats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .chapterStatItem {
+    padding: 12px;
+  }
+
+  .chaptersButton {
+    padding: 12px;
+    font-size: 14px;
+  }
+}

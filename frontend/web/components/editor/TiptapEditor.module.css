@@ -1,0 +1,1676 @@
+.editorContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menuBar {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  background: white;
+  flex-wrap: wrap;
+}
+
+.toolGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.menuBar button {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 0.375rem;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.menuBar button:hover {
+  background: #f1f5f9;
+  color: #1a1a1a;
+}
+
+.menuBar button.isActive {
+  background: #e0f2fe;
+  color: #2563eb;
+}
+
+.divider {
+  width: 1px;
+  height: 1.5rem;
+  background: #e2e8f0;
+  margin: 0 0.25rem;
+}
+
+.editorContent {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+}
+
+.content {
+  padding: 1rem;
+  min-height: 300px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 字号下拉菜单 */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding: 0.25rem;
+  min-width: 100px;
+}
+
+.dropdownItem {
+  width: 100% !important;
+  height: 2rem !important;
+  justify-content: flex-start !important;
+  padding: 0 0.5rem !important;
+}
+
+.dropdownItem:hover {
+  background: #f1f5f9;
+}
+
+/* 颜色选择器 */
+.colorPicker {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+  width: 120px;
+}
+
+.colorButton {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  border-radius: 0.25rem !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.colorButton:hover {
+  transform: scale(1.1);
+}
+
+/* 右侧工具 */
+.rightTools {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wordCount {
+  display: flex;
+  gap: 1rem;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.saveButton {
+  color: #2563eb !important;
+}
+
+.saveButton:hover {
+  background: #e0f2fe !important;
+}
+
+/* 格式化按钮 */
+.formatButton {
+  background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+  color: white !important;
+}
+
+.formatButton:hover {
+  background: linear-gradient(135deg, #1d4ed8, #6d28d9) !important;
+}
+
+.settingsButton {
+  color: #64748b !important;
+}
+
+.settingsButton:hover {
+  background: #f1f5f9 !important;
+  color: #1a1a1a !important;
+}
+
+/* 空格缩进按钮样式 */
+.indentButton {
+  width: auto !important;
+  padding: 0 0.5rem !important;
+  font-size: 0.75rem !important;
+  background-color: #f3f4f6 !important;
+  border: 1px solid #e5e7eb !important;
+  color: #374151 !important;
+}
+
+.indentButton:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+}
+
+/* 确保空格被保留的样式 */
+.preserveWhitespace {
+  white-space: pre-wrap !important;
+}
+
+.preserveWhitespace :global(.ProseMirror) {
+  white-space: pre-wrap !important;
+}
+
+.content :global(.ProseMirror) {
+  outline: none;
+  min-height: 300px;
+  white-space: pre-wrap !important;
+  -webkit-spell-check: false;
+  -ms-spell-check: false;
+  spellcheck: false;
+  position: relative;
+  z-index: 1;
+  tab-index: 0;
+}
+
+/* 禁用浏览器的拼写检查样式 */
+.content :global(.ProseMirror *) {
+  -webkit-spell-check: false;
+  -ms-spell-check: false;
+  spellcheck: false;
+}
+
+/* 移除拼写错误的红色下划线 */
+.content :global(.ProseMirror *::-webkit-spelling-error) {
+  text-decoration: none !important;
+  background-color: transparent !important;
+}
+
+.content :global(.ProseMirror *::-webkit-grammar-error) {
+  text-decoration: none !important;
+  background-color: transparent !important;
+}
+
+.content :global(.ProseMirror p) {
+  margin: 0.3em 0;
+  line-height: 1.5;
+  min-height: 1.5em;
+  white-space: pre-wrap !important;
+}
+
+.content :global(.ProseMirror h1) {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 1em 0 0.5em;
+}
+
+.content :global(.ProseMirror h2) {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 1em 0 0.5em;
+}
+
+.content :global(.ProseMirror h3) {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin: 1em 0 0.5em;
+}
+
+.content :global(.ProseMirror ul),
+.content :global(.ProseMirror ol) {
+  padding-left: 1.5em;
+  margin: 1em 0;
+}
+
+.content :global(.ProseMirror blockquote) {
+  border-left: 3px solid #e2e8f0;
+  padding-left: 1em;
+  margin: 1em 0;
+  color: #64748b;
+}
+
+.content :global(.ProseMirror) img {
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0;
+  display: block;
+}
+
+.content :global(.ProseMirror) img:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.content :global(.ProseMirror) img.ProseMirror-selectednode {
+  outline: 2px solid #4a9eff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.draggableImageWrapper {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  line-height: 0;
+}
+
+.imageContainer {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  margin: 0;
+}
+
+.imageContainer.selected {
+  outline: 2px solid #4a9eff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.draggableImage {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0;
+}
+
+.resizeHandles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.resizeHandle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #4a9eff;
+  border: 2px solid white;
+  border-radius: 50%;
+  pointer-events: all;
+  z-index: 100;
+}
+
+.resizeHandle.nw {
+  top: -6px;
+  left: -6px;
+  cursor: nw-resize;
+}
+
+.resizeHandle.ne {
+  top: -6px;
+  right: -6px;
+  cursor: ne-resize;
+}
+
+.resizeHandle.sw {
+  bottom: -6px;
+  left: -6px;
+  cursor: sw-resize;
+}
+
+.resizeHandle.se {
+  bottom: -6px;
+  right: -6px;
+  cursor: se-resize;
+}
+
+.resizeToolbar {
+  display: none;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px 8px;
+  gap: 8px;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.content :global(.ProseMirror img.ProseMirror-selectednode)+.resizeToolbar {
+  display: flex;
+}
+
+.resizeToolbar input {
+  width: 60px;
+  padding: 2px 4px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.resizeToolbar input:focus {
+  outline: none;
+  border-color: #0066cc;
+}
+
+.resizeToolbar button {
+  padding: 2px 8px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  cursor: pointer;
+  color: #333;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.resizeToolbar button:hover {
+  background: #e5e5e5;
+  border-color: #ccc;
+}
+
+.content :global(.ProseMirror a) {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.content :global(.ProseMirror a:hover) {
+  text-decoration: underline;
+}
+
+.content :global(.ProseMirror p.is-editor-empty:first-child::before) {
+  content: attr(data-placeholder);
+  float: left;
+  color: #94a3b8;
+  pointer-events: none;
+  height: 0;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content img:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 深色模式 */
+@media (prefers-color-scheme: dark) {
+  .editorContainer {
+    background: #1e293b;
+  }
+
+  .menuBar {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  .menuBar button {
+    color: #94a3b8;
+  }
+
+  .menuBar button:hover {
+    background: #334155;
+    color: #e2e8f0;
+  }
+
+  .menuBar button.isActive {
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+  }
+
+  .divider {
+    background: #334155;
+  }
+
+  .dropdown,
+  .colorPicker {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  .dropdownItem:hover {
+    background: #334155;
+    color: #e2e8f0;
+  }
+
+  .wordCount {
+    color: #94a3b8;
+  }
+
+  .content :global(.ProseMirror) {
+    color: #e2e8f0;
+  }
+
+  .content :global(.ProseMirror blockquote) {
+    border-color: #334155;
+    color: #94a3b8;
+  }
+
+  .content :global(.ProseMirror a) {
+    color: #60a5fa;
+  }
+
+  .content :global(.ProseMirror p.is-editor-empty:first-child::before) {
+    color: #64748b;
+  }
+
+  .resizeToolbar {
+    background-color: #1e293b;
+    border-color: #334155;
+  }
+
+  .resizeToolbar input {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .resizeToolbar button {
+    background: #334155;
+    border-color: #475569;
+    color: #e2e8f0;
+  }
+
+  .resizeToolbar button:hover {
+    background: #475569;
+    border-color: #64748b;
+  }
+
+  .resizeHandle {
+    background: #60a5fa;
+    border-color: #1e293b;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .menuBar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .toolGroup {
+    flex-wrap: wrap;
+  }
+
+  .rightTools {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .dropdown,
+  .colorPicker {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 300px;
+  }
+}
+
+.content :global(.resizable-image-wrapper) {
+  position: relative;
+  display: inline-block;
+  margin: 1em 0;
+}
+
+.content :global(.resizable-image-wrapper img) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.content :global(.resize-handle) {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #4a9eff;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  z-index: 2;
+  display: none;
+}
+
+.content :global(.resize-handle-nw) {
+  top: -5px;
+  left: -5px;
+  cursor: nw-resize;
+}
+
+.content :global(.resize-handle-ne) {
+  top: -5px;
+  right: -5px;
+  cursor: ne-resize;
+}
+
+.content :global(.resize-handle-sw) {
+  bottom: -5px;
+  left: -5px;
+  cursor: sw-resize;
+}
+
+.content :global(.resize-handle-se) {
+  bottom: -5px;
+  right: -5px;
+  cursor: se-resize;
+}
+
+.content :global(.resizable-image-wrapper:hover .resize-handle) {
+  display: block;
+}
+
+.content :global(.resizable-image-wrapper.ProseMirror-selectednode) {
+  outline: 2px solid #4a9eff;
+  border-radius: 2px;
+}
+
+.content :global(.resizable-image-wrapper.ProseMirror-selectednode .resize-handle) {
+  display: block;
+}
+
+.imageToolbar {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.imageToolbar input {
+  width: 60px;
+  padding: 2px 4px;
+  border: 1px solid #e2e8f0;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.imageToolbar input:focus {
+  outline: none;
+  border-color: #4a9eff;
+}
+
+.leftHandle {
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: w-resize;
+}
+
+.rightHandle {
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: e-resize;
+}
+
+@media (prefers-color-scheme: dark) {
+  .imageToolbar {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  .imageToolbar input {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .resizeHandle {
+    background: #60a5fa;
+    border-color: #1e293b;
+  }
+}
+
+.content :global(.editor-image) {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.content :global(.editor-image.selected) {
+  outline: 2px solid #4a9eff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.imageResizer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  width: 300px;
+}
+
+.imageResizer h3 {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.imageResizer .inputGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.imageResizer .inputGroup label {
+  width: 60px;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.imageResizer .inputGroup input {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.imageResizer .inputGroup input:focus {
+  outline: none;
+  border-color: #4a9eff;
+}
+
+.imageResizer .buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.imageResizer .buttons button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.imageResizer .buttons button.cancel {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.imageResizer .buttons button.apply {
+  background: #4a9eff;
+  color: white;
+}
+
+.imageResizer .buttons button:hover {
+  opacity: 0.9;
+}
+
+@media (prefers-color-scheme: dark) {
+  .imageResizer {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  .imageResizer h3 {
+    color: #e2e8f0;
+  }
+
+  .imageResizer .inputGroup label {
+    color: #94a3b8;
+  }
+
+  .imageResizer .inputGroup input {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .imageResizer .buttons button.cancel {
+    background: #334155;
+    color: #94a3b8;
+  }
+}
+
+/* 图片容器基础样式 */
+.content :global(.ProseMirror) img,
+.content :global(.editor-image),
+.content :global(.draggableImageWrapper),
+.content :global(.imageContainer) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.3em 0;
+  line-height: 0;
+}
+
+/* 调整段落的行高和边距 */
+.content :global(.ProseMirror p),
+.previewContent :global(.ProseMirror p) {
+  margin: 0.3em 0;
+  line-height: 1.5;
+  min-height: 1.5em;
+}
+
+/* 确保图片容器不会继承段落的边距 */
+.content :global(.ProseMirror p .draggableImageWrapper),
+.content :global(.ProseMirror p .imageContainer),
+.previewContent :global(.ProseMirror p .draggableImageWrapper),
+.previewContent :global(.ProseMirror p .imageContainer) {
+  margin: 0;
+  line-height: 0;
+}
+
+/* 预览模式图片样式 */
+.previewContent :global(.ProseMirror) img,
+.previewContent :global(.editor-image),
+.previewContent :global(.draggableImageWrapper),
+.previewContent :global(.imageContainer) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.3em 0;
+  line-height: 0;
+}
+
+.editor {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+.editorBottomBoundary {
+  height: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 0.75rem;
+  font-style: italic;
+  opacity: 0.6;
+  margin-top: 0.5rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .editorBottomBoundary {
+    border-top-color: #374151;
+    color: #6b7280;
+  }
+}
+
+/* AIPromptModal styles */
+.promptTextarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 100px;
+  margin-bottom: 16px;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.promptTextarea:focus {
+  border-color: #4a9eff;
+  box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.1);
+  outline: none;
+}
+
+.promptTextarea:blur {
+  border-color: #e2e8f0;
+  box-shadow: none;
+}
+
+.uploadArea {
+  border: 2px dashed #e2e8f0;
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f8fafc;
+}
+
+.uploadArea:hover {
+  border-color: #4a9eff;
+  background: #f0f9ff;
+}
+
+.uploadArea.dragging {
+  border-color: #4a9eff;
+  background: #f0f9ff;
+}
+
+.uploadIcon {
+  font-size: 24px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.uploadText {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.uploadHint {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.previewImage {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.removeImage {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.removeImage:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+@media (prefers-color-scheme: dark) {
+  .uploadArea {
+    border-color: #334155;
+    background: #1e293b;
+  }
+
+  .uploadArea:hover {
+    border-color: #60a5fa;
+    background: #0f172a;
+  }
+
+  .uploadArea.dragging {
+    border-color: #60a5fa;
+    background: #0f172a;
+  }
+
+  .uploadIcon {
+    color: #94a3b8;
+  }
+
+  .uploadText {
+    color: #94a3b8;
+  }
+
+  .uploadHint {
+    color: #64748b;
+  }
+}
+
+.promptOptions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.optionGroup {
+  flex: 1;
+}
+
+.optionLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.optionSelect {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #1a202c;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.optionSelect:focus {
+  border-color: #4a9eff;
+  box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.1);
+  outline: none;
+}
+
+.optionSelect:hover {
+  border-color: #cbd5e0;
+}
+
+.promptButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cancelButton {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background-color: white;
+  color: #4b5563;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancelButton:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+  background-color: #f8fafc;
+}
+
+.generateButton {
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #3b82f6;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.generateButton:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.generateButton:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+@media (prefers-color-scheme: dark) {
+  .promptTextarea {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .promptTextarea:focus {
+    border-color: #60a5fa;
+  }
+
+  .optionLabel {
+    color: #e2e8f0;
+  }
+
+  .optionSelect {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .optionSelect:focus {
+    border-color: #60a5fa;
+  }
+
+  .optionSelect:hover {
+    border-color: #475569;
+  }
+
+  .cancelButton {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .cancelButton:hover {
+    background-color: #334155;
+    border-color: #60a5fa;
+    color: #60a5fa;
+  }
+
+  .generateButton {
+    background-color: #3b82f6;
+  }
+
+  .generateButton:hover:not(:disabled) {
+    background-color: #2563eb;
+  }
+}
+
+.imagePreviewDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.imagePreviewContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.imageContainer img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.imageActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 16px 0;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.buttonIcon {
+  margin-right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonIcon i {
+  font-size: 14px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.downloadButton,
+.insertButton,
+.cancelButton {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.downloadButton {
+  background: #4f46e5;
+}
+
+.downloadButton:hover {
+  background: #4338ca;
+  transform: translateY(-1px);
+}
+
+.insertButton {
+  background: #10b981;
+}
+
+.insertButton:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.cancelButton {
+  background: #ef4444;
+}
+
+.cancelButton:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .imagePreviewContent {
+    background: #1f2937;
+  }
+
+  .imageActions {
+    background: #111827;
+  }
+}
+
+/* 加载对话框样式 */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4a9eff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loadingText {
+  font-size: 16px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.progressBar {
+  width: 200px;
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  width: 0;
+  height: 100%;
+  background: #4a9eff;
+  transition: width 0.3s ease;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 图片预览对话框样式 */
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.imageContainer:hover .imageOverlay {
+  opacity: 1;
+}
+
+.uploadToggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.toggleButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background-color: white;
+  color: #4b5563;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggleButton:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+  background-color: #f8fafc;
+}
+
+.toggleButtonActive {
+  border-color: #3b82f6;
+  color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+.toggleIcon {
+  font-size: 1rem;
+}
+
+.promptButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cancelButton {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background-color: white;
+  color: #4b5563;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancelButton:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+  background-color: #f8fafc;
+}
+
+.generateButton {
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #3b82f6;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.generateButton:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.generateButton:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+@media (prefers-color-scheme: dark) {
+  .toggleButton {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .toggleButton:hover {
+    background: #334155;
+    border-color: #60a5fa;
+    color: #60a5fa;
+  }
+
+  .toggleButtonActive {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: #60a5fa;
+    color: #60a5fa;
+  }
+
+  .cancelButton {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .cancelButton:hover {
+    background: #334155;
+    border-color: #60a5fa;
+    color: #60a5fa;
+  }
+
+  .generateButton {
+    background-color: #3b82f6;
+  }
+
+  .generateButton:hover:not(:disabled) {
+    background-color: #2563eb;
+  }
+}
+
+.imagePreviewDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.imagePreviewContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.imageContainer img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.imageActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 16px 0;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.buttonIcon {
+  margin-right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonIcon i {
+  font-size: 14px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.downloadButton,
+.insertButton,
+.cancelButton {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.downloadButton {
+  background: #4f46e5;
+}
+
+.downloadButton:hover {
+  background: #4338ca;
+  transform: translateY(-1px);
+}
+
+.insertButton {
+  background: #10b981;
+}
+
+.insertButton:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.cancelButton {
+  background: #ef4444;
+}
+
+.cancelButton:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .imagePreviewContent {
+    background: #1f2937;
+  }
+
+  .imageActions {
+    background: #111827;
+  }
+}
+
+/* 加载对话框样式 */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4a9eff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loadingText {
+  font-size: 16px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.progressBar {
+  width: 200px;
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  width: 0;
+  height: 100%;
+  background: #4a9eff;
+  transition: width 0.3s ease;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 图片预览对话框样式 */
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.imageContainer:hover .imageOverlay {
+  opacity: 1;
+}
+
+.uploadToggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.toggleButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  color: #4a5568;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggleButton:hover {
+  background: #f8fafc;
+  border-color: #cbd5e0;
+}
+
+.toggleButtonActive {
+  background: #e0f2fe;
+  border-color: #4a9eff;
+  color: #2563eb;
+}
+
+.toggleButtonActive:hover {
+  background: #dbeafe;
+  border-color: #3b82f6;
+}
+
+.toggleIcon {
+  font-size: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .toggleButton {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  .toggleButton:hover {
+    background: #334155;
+    border-color: #475569;
+  }
+
+  .toggleButtonActive {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: #60a5fa;
+    color: #60a5fa;
+  }
+
+  .toggleButtonActive:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: #3b82f6;
+  }
+}

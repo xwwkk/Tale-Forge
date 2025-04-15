@@ -1,0 +1,174 @@
+.rankingItem {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #eee;
+  transition: all 0.3s;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.rankingItem:last-child {
+  margin-bottom: 0;
+  height: 100%;
+}
+
+.rankingItem:hover {
+  transform: translateY(-2px);
+  border-color: #2563eb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+/* 排名徽章 */
+.rankBadge {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.rankBadge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.rankBadge span {
+  font-weight: 600;
+  color: #2563eb;
+  font-size: 1.125rem;
+  z-index: 1;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 80px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.image {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.nftBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #7c3aed;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 4px;
+  color: #1f2937;
+}
+
+.author {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 12px;
+}
+
+.stats {
+  display: grid;
+  gap: 8px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.label {
+  color: #6b7280;
+}
+
+.value {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+/* 箭头 */
+.arrow {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.arrowIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.rankingItem:hover .arrow {
+  transform: translateX(4px);
+  color: #2563eb;
+}
+
+/* 悬停光效 */
+.rankingItem::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(37, 99, 235, 0.1) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.rankingItem:hover::after {
+  transform: translateX(100%);
+} color: #2563eb;
+}

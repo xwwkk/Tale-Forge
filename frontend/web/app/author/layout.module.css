@@ -1,0 +1,257 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 118px;
+  background-color: #f8fafc;
+}
+
+.sidebar {
+  width: 240px;
+  background: white;
+  border-right: 1px solid #e5e7eb;
+  height: calc(100vh - 118px);
+  position: fixed;
+  top: 118px;
+  left: 0;
+  overflow-y: auto;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.05);
+  transition: width 0.3s ease;
+  z-index: 10;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.nav {
+  padding: 3.5rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: 0.875rem 1.25rem;
+  color: #4b5563;
+  text-decoration: none;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  background: #f3f4f6;
+  color: #2563eb;
+  transform: translateX(2px);
+}
+
+.navLink.active {
+  background: #eef2ff;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.navLink.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 24px;
+  background: #2563eb;
+  border-radius: 0 4px 4px 0;
+}
+
+.sidebar.collapsed .navLink {
+  padding: 0.875rem;
+  justify-content: center;
+}
+
+.sidebar.collapsed .navLink span {
+  display: none;
+}
+
+.navIcon {
+  display: inline-flex;
+  margin-right: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.sidebar.collapsed .navIcon {
+  margin-right: 0;
+}
+
+.toggleButton {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.toggleButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.toggleButton:hover {
+  background: linear-gradient(135deg, #4338ca, #4f46e5);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.toggleButton:hover::before {
+  transform: scale(1);
+}
+
+.toggleButton:active {
+  transform: scale(0.95);
+}
+
+.toggleButton svg {
+  width: 18px;
+  height: 18px;
+  transition: all 0.2s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.sidebar.collapsed .toggleButton {
+  left: 10px;
+}
+
+.main {
+  flex: 1;
+  margin-left: 240px;
+  min-height: calc(100vh - 118px);
+  padding: 2rem;
+  background: #f8fafc;
+  transition: margin-left 0.3s ease;
+}
+
+.main.collapsed {
+  margin-left: 60px;
+}
+
+/* 深色模式 */
+@media (prefers-color-scheme: dark) {
+  .sidebar {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  .navLink {
+    color: #94a3b8;
+  }
+
+  .navLink:hover {
+    background: #334155;
+    color: #e2e8f0;
+  }
+
+  .main {
+    background: #0f172a;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .layout {
+    padding-top: 70px;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .sidebar.collapsed {
+    width: 100%;
+  }
+
+  .main {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .main.collapsed {
+    margin-left: 0;
+  }
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .toggleButton {
+    display: none;
+  }
+}
+
+.buttonTooltip {
+  position: absolute;
+  left: 46px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #1f2937;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.buttonTooltip::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+  border-width: 6px 6px 6px 0;
+  border-style: solid;
+  border-color: transparent #1f2937 transparent transparent;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

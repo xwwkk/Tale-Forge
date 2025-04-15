@@ -1,0 +1,86 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+}
+
+.modalContent {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modalTitle {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #64748b;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.closeButton:hover {
+    background-color: #f1f5f9;
+    color: #1a1a1a;
+}
+
+.modalBody {
+    padding: 24px;
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    .modalContent {
+        background-color: #1e293b;
+    }
+
+    .modalHeader {
+        border-bottom-color: #334155;
+    }
+
+    .modalTitle {
+        color: #e2e8f0;
+    }
+
+    .closeButton {
+        color: #94a3b8;
+    }
+
+    .closeButton:hover {
+        background-color: #334155;
+        color: #e2e8f0;
+    }
+}

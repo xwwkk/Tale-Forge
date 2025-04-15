@@ -1,0 +1,115 @@
+/* 基础卡片样式 */
+.card {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid #eee;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: rgba(120, 119, 198, 0.2);
+}
+
+/* Web3 标签样式 */
+.web3Tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  z-index: 1;
+}
+
+.web3Icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Web3 信息区域 */
+.web3Info {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(120, 119, 198, 0.05);
+  border-top: 1px solid rgba(120, 119, 198, 0.1);
+}
+
+.web3InfoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.web3Label {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.web3Value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #7877C6;
+}
+
+/* 渐变边框效果 */
+.gradientBorder {
+  position: relative;
+}
+
+.gradientBorder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #7877C6, #F97316);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gradientBorder:hover::before {
+  opacity: 1;
+}
+
+/* 光效动画 */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.shimmer:hover::after {
+  transform: translateX(100%);
+} 

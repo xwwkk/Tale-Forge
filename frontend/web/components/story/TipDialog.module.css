@@ -1,0 +1,167 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.dialog {
+  width: 90%;
+  max-width: 480px;
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.closeButton:hover {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.content {
+  margin-bottom: 2rem;
+}
+
+.amounts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.amountButton {
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  color: #4b5563;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.amountButton:hover {
+  border-color: #7877C6;
+  color: #7877C6;
+}
+
+.amountButton.active {
+  background: #7877C6;
+  color: white;
+  border-color: #7877C6;
+}
+
+.customAmount {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #7877C6;
+}
+
+.unit {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.footer {
+  text-align: center;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 0.875rem;
+  background: #7877C6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submitButton:hover {
+  background: #6563B9;
+}
+
+.submitButton:disabled {
+  background: #9CA3AF;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .dialog {
+    padding: 1.5rem;
+  }
+
+  .amounts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+} 

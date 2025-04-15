@@ -1,0 +1,181 @@
+1、关于DATABASE_URL：
+开发环境：可以使用本地数据库，URL就是postgresql://user:password@localhost:5432/taleforge
+生产环境：需要改为实际部署的数据库服务器地址，比如：
+DATABASE_URL="postgresql://user:password@your-server-ip:5432/taleforge"
+或者如果使用云数据库服务（比如AWS RDS、阿里云RDS等），则使用其提供的连接字符串。
+2、关于PostgreSQL数据库：
+是的，这是后端服务器使用的关系型数据库
+部署选项：
+自建服务器：在您的后端服务器上安装PostgreSQL
+云服务：使用云数据库服务，比如：
+AWS RDS for PostgreSQL
+阿里云RDS for PostgreSQL
+腾讯云PostgreSQL
+部署架构会是这样：
+前端（Next.js） -> API路由 -> 数据库
+                          |
+                          -> 区块链
+前端：部署到静态托管服务（如Vercel、Netlify等）
+API路由：部署到后端服务器
+数据库：部署到后端服务器或使用云数据库服务
+区块链：BSC测试网/主网（已经部署好了）
+建议：
+
+开发时使用本地数据库进行测试
+部署时使用环境变量来配置不同环境的数据库连接信息
+考虑使用云数据库服务，可以减少运维压力，提供更好的可靠性和扩展性
+
+
+分布式存储Infura 的 IPFS 服务使用：
+1、获取 Infura IPFS 凭证
+    1. 访问 https://infura.io/
+    2. 注册/登录账号
+    3. 创建新项目，选择 IPFS
+    4. 在项目设置中找到：
+    - IPFS Project ID
+    - IPFS Project Secret
+    - IPFS Gateway URL
+2、配置环境变量 在项目根目录创建或修改 .env 文件：
+    IPFS_PROJECT_ID=你的_Project_ID
+    IPFS_PROJECT_SECRET=你的_Project_Secret
+    IPFS_GATEWAY=https://ipfs.io/ipfs/
+3、安装依赖
+    npm install ipfs-http-client@60.0.1
+4、验证 IPFS 配置 让我创建一个测试脚本来验证 IPFS 配置是否正确：
+
+5、运行测试脚本
+    cd packages/database
+    npx ts-node src/scripts/test-ipfs.ts
+6、项目中的使用方法
+    我们的项目中已经封装了以下 IPFS 功能：
+    // 1. 上传文本内容
+    const cid = await uploadToIPFS('要上传的内容')
+
+    // 2. 上传图片
+    const cid = await uploadImageToIPFS(imageFile)
+
+    // 3. 上传 JSON 数据
+    const cid = await uploadJSONToIPFS({ title: '标题', content: '内容' })
+
+    // 4. 获取内容
+    const content = await getFromIPFS(cid)
+
+    // 5. 获取 JSON 数据
+    const data = await getJSONFromIPFS(cid)
+
+    // 6. 获取 IPFS URL（用于显示图片等）
+    const url = getIPFSUrl(cid)
+7、使用示例 在故事服务中的使用示例：
+    // 创建故事时
+    const contentCID = await uploadToIPFS(content)
+    const coverCID = await uploadImageToIPFS(cover)
+
+    // 读取故事内容时
+    const content = await getFromIPFS(story.contentCID)
+
+
+Web3.Storage 的完整注册和使用步骤：
+1、注册 Web3.Storage 账号：
+    访问 https://web3.storage/
+    点击右上角的 "Sign Up" 按钮
+    输入你的邮箱地址
+    你会收到一个验证邮件
+    点击邮件中的验证链接完成注册
+2、配置项目：
+    1、在 .env 文件中更新（已完成）：
+    WEB3_STORAGE_EMAIL=你的邮箱地址
+    IPFS_GATEWAY=https://w3s.link/ipfs
+
+3、验证配置：
+进入 packages/database 目录
+运行测试脚本：
+npx ts-node src/scripts/test-ipfs.ts
+首次运行时，会在控制台显示一个链接
+点击链接，会打开浏览器
+在浏览器中确认授权
+授权成功后，测试脚本会继续运行
+
+4、使用说明：
+    上传文本：
+    typescript
+    CopyInsert
+    const cid = await uploadToIPFS('Hello, World!')
+    上传图片：
+    typescript
+    CopyInsert
+    const cid = await uploadImageToIPFS(imageFile)
+    上传 JSON：
+    typescript
+    CopyInsert
+    const cid = await uploadJSONToIPFS({ hello: 'world' })
+    获取内容：
+    typescript
+    CopyInsert
+    const content = await getFromIPFS(cid)
+5、查看上传的文件：
+    登录 Web3.Storage
+    点击 "Files" 标签
+    你可以看到所有上传的文件
+    点击文件可以查看详情和 IPFS 链接
+
+    需要国外支付账户
+
+Pinata 注册和使用步骤：
+
+1、更新环境变量： 修改 .env 文件中的 IPFS 配置：
+    env
+    CopyInsert
+    # Pinata Configuration
+    PINATA_API_KEY=你的_API_KEY
+    PINATA_API_SECRET=你的_API_SECRET
+    IPFS_GATEWAY=https://gateway.pinata.cloud/ipfs
+
+A. 注册 Pinata 账号：
+
+    访问 https://app.pinata.cloud/register
+    点击 "Sign Up"
+    填写：
+    电子邮件
+    密码
+    用户名
+    验证邮箱（点击邮件中的链接）
+B. 获取 API 密钥：
+
+    登录 Pinata 账号
+    点击左侧菜单的 "API Keys"
+    点击 "New Key" 按钮
+    选择权限：
+    pinFileToIPFS
+    pinJSONToIPFS
+    给 API 密钥起个名字（如 "TaleForge"）
+    点击 "Create Key"
+    保存生成的：
+    API Key
+    API Secret
+C. 配置项目：
+
+    在 .env 文件中添加 Pinata 凭证
+    确保所有服务都能访问这些环境变量
+D. 测试配置：
+
+    进入 packages/database 目录
+    运行测试脚本：
+    bash
+    CopyInsert in Terminal
+    npx ts-node src/scripts/test-ipfs.ts
+E. 使用注意事项：
+
+    免费账户限制：
+    存储空间：1GB
+    带宽限制：每月 100GB
+    文件会永久保存在 IPFS 网络
+    可以通过 Pinata 仪表板管理文件
+    建议给上传的文件添加有意义的名称
+
+
+现在可以使用 Pinata IPFS 服务来：
+上传文本内容：uploadToIPFS(content)
+上传图片：uploadImageToIPFS(file)
+上传 JSON 数据：uploadJSONToIPFS(data)
+获取内容：getFromIPFS(cid) 或 getJSONFromIPFS(cid)
+获取 IPFS URL：getIPFSUrl(cid)

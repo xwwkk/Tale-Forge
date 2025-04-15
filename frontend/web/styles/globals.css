@@ -1,0 +1,23 @@
+/* 添加页面容器样式 */
+.page-container {
+  padding-top: 5rem; /* 为固定导航栏留出空间 */
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-content {
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    padding-top: 6rem; /* 在大屏幕上留出更多空间 */
+  }
+  .page-content {
+    padding: 0 2rem;
+  }
+} 

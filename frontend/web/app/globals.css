@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'react-image-crop/dist/ReactCrop.css';
+
+/* 默认允许滚动，特定页面可以通过添加no-scroll类来禁用滚动 */
+@layer base {
+  html, body {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+/* 创作界面等需要禁用滚动的页面可以使用此类 */
+.no-scroll {
+  overflow: hidden !important;
+  position: fixed !important;
+  inset: 0 !important;
+}
+:root {
+  /* 颜色系统 */
+  --color-primary: 37, 99, 235;     /* #2563eb - 主色�?*/
+  --color-secondary: 120, 119, 198; /* #7877C6 - 辅色�?*/
+  --color-accent: 249, 115, 22;     /* #F97316 - 强调�?*/
+  
+  /* 中性色 */
+  --color-text-primary: 26, 26, 26;    /* #1A1A1A */
+  --color-text-secondary: 102, 102, 102; /* #666666 */
+  --color-text-tertiary: 153, 153, 153;  /* #999999 */
+  --color-border: 238, 238, 238;         /* #EEEEEE */
+  --color-background: 248, 249, 250;     /* #F8F9FA */
+  
+  /* 功能�?*/
+  --color-success: 34, 197, 94;     /* #22C55E */
+  --color-warning: 234, 179, 8;     /* #EAB308 */
+  --color-error: 239, 68, 68;       /* #EF4444 */
+  --color-info: 59, 130, 246;       /* #3B82F6 */
+
+  /* 间距系统 */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 2.5rem;   /* 40px */
+  --spacing-3xl: 3rem;     /* 48px */
+
+  /* 圆角 */
+  --radius-sm: 0.375rem;   /* 6px */
+  --radius-md: 0.5rem;     /* 8px */
+  --radius-lg: 1rem;       /* 16px */
+  --radius-xl: 1.5rem;     /* 24px */
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* 动画 */
+  --transition-fast: 150ms;
+  --transition-normal: 300ms;
+  --transition-slow: 500ms;
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@layer base {
+  body {
+    @apply text-base bg-[rgb(var(--color-background))];
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* 添加网格背景 */
+.bg-grid-white {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+}
+
+.bg-grid-8 {
+  background-size: 2rem 2rem;
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-border));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-text-tertiary));
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-text-secondary));
+}
+
+/* 其他全局样式 */
+
+main {
+  min-height: 100vh;
+}
+
+/* React Image Crop Styles */
+@import 'react-image-crop/dist/ReactCrop.css';
+
+/* Custom Image Cropper Styles */
+.ReactCrop {
+  max-width: 100%;
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.ReactCrop__crop-selection {
+  border: 2px solid #2563eb;
+}
+
+.ReactCrop__drag-handle {
+  background-color: #2563eb;
+}
+
+.ReactCrop__drag-handle::after {
+  background-color: #2563eb;
+}
+
+.image-cropper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.image-cropper-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.image-cropper-preview {
+  width: 200px;
+  height: 200px;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 2px solid #e5e7eb;
+}
+
+/* 禁用拼写检�?- 增强�?*/
+[contenteditable="true"],
+[contenteditable="true"] *,
+input, textarea, 
+.ProseMirror, 
+.ProseMirror *,
+[spellcheck],
+[role="textbox"],
+.editor-content,
+.editor-content *,
+.content,
+.content * {
+  -webkit-spell-check: false !important;
+  -ms-spell-check: false !important;
+  spellcheck: false !important;
+}
+
+/* 移除拼写错误的红色下划线 - 增强�?*/
+[contenteditable="true"]::-webkit-spelling-error,
+[contenteditable="true"] *::-webkit-spelling-error,
+input::-webkit-spelling-error,
+textarea::-webkit-spelling-error,
+.ProseMirror::-webkit-spelling-error,
+.ProseMirror *::-webkit-spelling-error,
+[spellcheck]::-webkit-spelling-error,
+[role="textbox"]::-webkit-spelling-error,
+.editor-content::-webkit-spelling-error,
+.editor-content *::-webkit-spelling-error,
+.content::-webkit-spelling-error,
+.content *::-webkit-spelling-error {
+  text-decoration: none !important;
+  background-color: transparent !important;
+}
+
+[contenteditable="true"]::-webkit-grammar-error,
+[contenteditable="true"] *::-webkit-grammar-error,
+input::-webkit-grammar-error,
+textarea::-webkit-grammar-error,
+.ProseMirror::-webkit-grammar-error,
+.ProseMirror *::-webkit-grammar-error,
+[spellcheck]::-webkit-grammar-error,
+[role="textbox"]::-webkit-grammar-error,
+.editor-content::-webkit-grammar-error,
+.editor-content *::-webkit-grammar-error,
+.content::-webkit-grammar-error,
+.content *::-webkit-grammar-error {
+  text-decoration: none !important;
+  background-color: transparent !important;
+}
+

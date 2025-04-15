@@ -1,0 +1,161 @@
+.container {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 主题相关样式 */
+:global(.theme-default) .container {
+  background: #f8f9fa;
+}
+
+:global(.theme-eyeCare) .container {
+  background: #cce8cf;
+}
+
+:global(.theme-dark) .container {
+  background: #1a1a1a;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+:global(.theme-dark) .input {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+  color: #e0e0e0;
+}
+
+:global(.theme-dark) .input:focus {
+  border-color: #7877C6;
+}
+
+:global(.theme-dark) .replyHeader,
+:global(.theme-dark) .counter {
+  color: #999;
+}
+
+:global(.theme-sepia) .container {
+  background: #f4ecd8;
+}
+
+:global(.theme-sepia) .input {
+  background: #f4ecd8;
+  border-color: #e6d5b8;
+  color: #5c4b37;
+}
+
+.replyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.cancelButton {
+  padding: 0.25rem 0.5rem;
+  color: #666;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.cancelButton:hover {
+  color: #333;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 80px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+  background: inherit;
+}
+
+/* 主题相关样式 */
+:global(.theme-default) .input {
+  background: #f8f9fa;
+  border-color: #e5e7eb;
+  color: #333;
+}
+
+:global(.theme-eyeCare) .input {
+  background: #cce8cf;
+  border-color: #bde0c0;
+  color: #333;
+}
+
+:global(.theme-dark) .input {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+  color: #e0e0e0;
+}
+
+:global(.theme-sepia) .input {
+  background: #f4ecd8;
+  border-color: #e6d5b8;
+  color: #5c4b37;
+}
+
+/* 输入框焦点状态 */
+:global(.theme-default) .input:focus,
+:global(.theme-eyeCare) .input:focus,
+:global(.theme-dark) .input:focus,
+:global(.theme-sepia) .input:focus {
+  border-color: #7877C6;
+}
+
+/* 计数器颜色 */
+:global(.theme-default) .counter {
+  color: #666;
+}
+
+:global(.theme-eyeCare) .counter {
+  color: #666;
+}
+
+:global(.theme-dark) .counter {
+  color: #999;
+}
+
+:global(.theme-sepia) .counter {
+  color: #8b7355;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.submitButton {
+  padding: 0.5rem 1rem;
+  background: #7877C6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #6665b5;
+}
+
+.submitButton:disabled {
+  background: #a5a4e0;
+  cursor: not-allowed;
+} 
